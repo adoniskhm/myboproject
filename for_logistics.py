@@ -2,9 +2,12 @@ import win32com.client as win32
 import os
 from datetime import datetime
 
+# exfile_path = input("NEW수입철 엑셀파일이 있는 경로를 입력해 주세요.")
+input("NEW수입철.xlsm 파일이 꼭 바탕화면에 있어야 합니다. 엔터...")
+
 # 1. 현재 파이썬 파일이 실행되는 디렉토리에서 엑셀 파일을 엽니다.
 current_dir = os.path.dirname(os.path.abspath(__file__))  # 현재 실행 중인 파이썬 파일의 경로
-excel_file = os.path.join(current_dir, 'NEW수입철.xlsm')  # 엑셀 파일의 상대 경로
+excel_file = os.path.join(current_dir, rf'c:\users\patrick\desktop\NEW수입철.xlsm')  # 엑셀 파일의 상대 경로
 
 excel = win32.Dispatch('Excel.Application')
 excel.Visible = True  # 엑셀 창을 사용자에게 보이게 함
@@ -93,7 +96,7 @@ excel.DisplayAlerts = True  # 알림 다시 활성화
 
 # 13. 현재 날짜를 기반으로 파일을 저장
 today = datetime.today().strftime('%Y%m%d')  # 오늘 날짜를 YYYYMMDD 형식으로 저장
-save_path = os.path.join(current_dir, f'수입품목리스트_{today}.xlsx')  # 파일명 생성
+save_path = os.path.join(current_dir, rf'c:\users\patrick\desktop\수입품목리스트_{today}.xlsx')  # 파일명 생성
 
 wb.SaveAs(save_path, FileFormat=51)  # 새로운 이름으로 .xlsx 형식으로 저장 (51 = xlOpenXMLWorkbook)
 print(f'파일이 {save_path}에 저장되었습니다.')
